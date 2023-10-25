@@ -1,0 +1,10 @@
+Guess a letter:
+Missed, mistake 1 out of 5.
+
+The word: ****
+
+Guess a letter:
+You have already used this letter. Try another one.
+
+Guess a letter:
+You lost!
