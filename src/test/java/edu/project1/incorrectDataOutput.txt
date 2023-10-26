@@ -1,0 +1,20 @@
+Guess a letter:
+Incorrect input. Try again
+
+Guess a letter:
+Incorrect input. Try again
+
+Guess a letter:
+Incorrect input. Try again
+
+Guess a letter:
+Incorrect input. Try again
+
+Guess a letter:
+Incorrect input. Try again
+
+Guess a letter:
+Incorrect input. Try again
+
+Guess a letter:
+You lost!
