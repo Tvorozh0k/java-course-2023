@@ -21,10 +21,8 @@ public class Task14 {
             throw new IllegalArgumentException("Ошибка: рост должен быть положительным числом");
         }
 
-        return !animals.stream()
-            .filter(a -> a.type().equals(Animal.Type.DOG) && a.height() > k)
-            .toList()
-            .isEmpty();
+        return animals.stream()
+            .anyMatch(a -> a.type().equals(Animal.Type.DOG) && a.height() > k);
     }
 
     public static void main(String[] args) {

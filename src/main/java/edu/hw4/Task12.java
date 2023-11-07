@@ -16,10 +16,9 @@ public class Task12 {
      * @return The number of animals with weight bigger than height
      */
     static Integer weightBiggerHeight(List<Animal> animals) {
-        return animals.stream()
+        return (int) animals.stream()
             .filter(a -> a.weight() > a.height())
-            .toList()
-            .size();
+            .count();
     }
 
     public static void main(String[] args) {
