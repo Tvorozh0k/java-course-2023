@@ -11,7 +11,7 @@ public class Main {
         System.out.println("\nСоздаем маршрут из точки А(1, 1) в точку B(17, 17):\n");
 
         var solver1 = new MazeSolver(maze1);
-        solver1.BFS(1, 1, 17, 17);
+        solver1.bfs(1, 1, 17, 17);
 
         System.out.println("\nСоздаем лабиринт при помощи алгоритма Prim:\n");
 
@@ -21,6 +21,6 @@ public class Main {
         System.out.println("\nСоздаем маршрут из точки А(1, 1) в точку B(11, 17):\n");
 
         var solver2 = new MazeSolver(maze2);
-        solver2.BFS(1, 1, 11, 17);
+        solver2.bfs(1, 1, 11, 17);
     }
 }

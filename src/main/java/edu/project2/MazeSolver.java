@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class MazeSolver {
 
     private final Maze maze;
-    private final ArrayList<ArrayList<Maze.PointType>> grid;
+    private final ArrayList<ArrayList<PointType>> grid;
 
     private final int[] iDelta = {-1, 0, 0, 1};
     private final int[] jDelta = {0, -1, 1, 0};
@@ -31,7 +31,7 @@ public class MazeSolver {
         }
     }
 
-    public void BFS(int i1, int j1, int i2, int j2) throws IllegalArgumentException {
+    public void bfs(int i1, int j1, int i2, int j2) throws IllegalArgumentException {
         int rows = maze.rows();
         int cols = maze.cols();
 
@@ -43,11 +43,11 @@ public class MazeSolver {
             throw new IllegalArgumentException("Ошибка: индексы точки выходят за пределы лабиринта");
         }
 
-        if (grid.get(i1).get(j1).equals(Maze.PointType.Wall)) {
+        if (grid.get(i1).get(j1).equals(PointType.Wall)) {
             throw new IllegalArgumentException("Ошибка: точка является стеной");
         }
 
-        if (grid.get(i2).get(j2).equals(Maze.PointType.Wall)) {
+        if (grid.get(i2).get(j2).equals(PointType.Wall)) {
             throw new IllegalArgumentException("Ошибка: точка является стеной");
         }
 
@@ -71,9 +71,9 @@ public class MazeSolver {
                 int iNew = i + iDelta[k];
                 int jNew = j + jDelta[k];
 
-                if (0 <= iNew && iNew < rows && 0 <= jNew && jNew < cols &&
-                    !grid.get(iNew).get(jNew).equals(Maze.PointType.Wall) &&
-                    parent.get(iNew).get(jNew).equals(-1)) {
+                if (0 <= iNew && iNew < rows && 0 <= jNew && jNew < cols
+                    && !grid.get(iNew).get(jNew).equals(PointType.Wall)
+                    && parent.get(iNew).get(jNew).equals(-1)) {
                     parent.get(iNew).set(jNew, i * cols + j);
                     points.add(iNew * cols + jNew);
                 }
@@ -89,7 +89,7 @@ public class MazeSolver {
         int j = j2;
 
         while (i1 != i || j1 != j) {
-            grid.get(i).set(j, Maze.PointType.Path);
+            grid.get(i).set(j, PointType.Path);
 
             int p = parent.get(i).get(j);
 
@@ -97,11 +97,11 @@ public class MazeSolver {
             j = p % cols;
         }
 
-        grid.get(i1).set(j1, Maze.PointType.Start);
-        grid.get(i2).set(j2, Maze.PointType.Finish);
+        grid.get(i1).set(j1, PointType.Start);
+        grid.get(i2).set(j2, PointType.Finish);
 
         for (int ind = 0; ind < rows; ++ind) {
-            System.out.println(grid.get(ind).stream().map(Maze.PointType::toString).collect(Collectors.joining()));
+            System.out.println(grid.get(ind).stream().map(PointType::toString).collect(Collectors.joining()));
         }
     }
 }

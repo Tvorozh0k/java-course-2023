@@ -15,7 +15,7 @@ public class Maze {
     private final int[] iDelta = {-2, 0, 0, 2};
     private final int[] jDelta = {0, -2, 2, 0};
 
-    private void Prim() {
+    private void prim() {
         ArrayList<ArrayList<Integer>> frontiers = new ArrayList<>();
 
         int i = 2 * new Random().nextInt((rows - 1) / 2) + 1;
@@ -46,7 +46,7 @@ public class Maze {
         }
     }
 
-    private void RecursiveBacktracking(int i, int j) {
+    private void recursiveBacktracking(int i, int j) {
         grid.get(i).set(j, PointType.Empty);
 
         ArrayList<Integer> choices = new ArrayList<>();
@@ -68,7 +68,7 @@ public class Maze {
 
             if (grid.get(iNew).get(jNew).equals(PointType.Wall)) {
                 grid.get(i + iDelta[k] / 2).set(j + jDelta[k] / 2, PointType.Empty);
-                RecursiveBacktracking(iNew, jNew);
+                recursiveBacktracking(iNew, jNew);
             }
         }
     }
@@ -92,8 +92,9 @@ public class Maze {
         }
 
         switch (type) {
-            case Prim -> Prim();
-            case RecursiveBacktracking -> RecursiveBacktracking(1, 1);
+            case Prim -> prim();
+            case RecursiveBacktracking -> recursiveBacktracking(1, 1);
+            default -> throw new IllegalArgumentException("Ошибка: неизвестный алгоритм построения лабиринта");
         }
     }
 
@@ -117,24 +118,5 @@ public class Maze {
 
     public enum AlgorithmType {
         Prim, RecursiveBacktracking
-    }
-
-    public enum PointType {
-        Empty("  "),
-        Wall("██"),
-        Start("ST"),
-        Finish("FN"),
-        Path("..");
-
-        private final String view;
-
-        PointType(String view) {
-            this.view = view;
-        }
-
-        @Override
-        public String toString() {
-            return view;
-        }
     }
 }

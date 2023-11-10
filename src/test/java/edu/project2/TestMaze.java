@@ -46,7 +46,7 @@ public class TestMaze {
         var solver = new MazeSolver(maze);
 
         // then
-        assertThatThrownBy(() -> solver.BFS(i1, j1, i2, j2))
+        assertThatThrownBy(() -> solver.bfs(i1, j1, i2, j2))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }
